@@ -1,9 +1,9 @@
 import scrapy
 
 
-class HouseSpider(scrapy.Spider):
+class FundaSpider(scrapy.Spider):
     """Get data of available houses on the market"""
-    name = "houses"
+    name = "funda"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -28,6 +28,7 @@ class FundaSpider(scrapy.Spider):
                'address': self.extract_address(response),
                'postcode': self.extract_postcode(response),
                'price': self.extract_price(response),
+               'building_type': self.extract_building_type(response),
                'living_area': self.extract_living_area(response),
                'year_of_construction': self.extract_year_of_construction(response),
                }
@@ -58,6 +59,11 @@ class FundaSpider(scrapy.Spider):
     def extract_price(response):
         return response.xpath("//dt[contains(.,'Asking price')]/following-sibling::dd[1]/span[1]/text()") \
             .get().split(' ')[1]
+
+    @staticmethod
+    def extract_building_type(response):
+        return response.xpath("//dt[contains(.,'Building type')]/following-sibling::dd[1]/span[1]/text()") \
+            .get()
 
     @staticmethod
     def extract_living_area(response):

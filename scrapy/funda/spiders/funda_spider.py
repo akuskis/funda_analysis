@@ -9,7 +9,8 @@ class FundaSpider(scrapy.Spider):
         super().__init__(**kwargs)
         self.__property_map = {'huis': 'house', 'appartement': 'apartment'}
         self.start_urls = [
-            'https://www.funda.nl/en/koop/heel-nederland/beschikbaar/'
+            'https://www.funda.nl/en/koop/heel-nederland/beschikbaar/appartement/',
+            'https://www.funda.nl/en/koop/heel-nederland/beschikbaar/huis/',
         ]
 
     def parse(self, response, **kwargs):
@@ -39,7 +40,7 @@ class FundaSpider(scrapy.Spider):
         if property_type in self.__property_map:
             return self.__property_map[property_type]
 
-        return 'other'
+        return None
 
     @staticmethod
     def extract_town(response):

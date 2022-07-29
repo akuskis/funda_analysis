@@ -12,6 +12,7 @@ BOT_NAME = 'funda'
 SPIDER_MODULES = ['funda.spiders']
 NEWSPIDER_MODULE = 'funda.spiders'
 
+LOG_LEVEL = 'ERROR'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'funda (+http://www.yourdomain.com)'

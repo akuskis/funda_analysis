@@ -26,3 +26,7 @@ scrapy crawl funda -O dump.json
 Where `funda` is a name of the spider and `dump.json` is a place where to store collected data.
 
 ## Historical data
+
+## Analysis
+
+Amsterdam dependency: price / built date

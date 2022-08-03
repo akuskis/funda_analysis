@@ -58,20 +58,18 @@ class FundaSpider(scrapy.Spider):
 
     @staticmethod
     def extract_price(response):
-        return response.xpath("//dt[contains(.,'Asking price')]/following-sibling::dd[1]/span[1]/text()") \
-            .get().split(' ')[1]
+        return response.xpath("//dt[contains(.,'Asking price')]/following-sibling::dd[1]/span[1]/text()").get()
 
     @staticmethod
     def extract_building_type(response):
-        return response.xpath("//dt[contains(.,'Building type')]/following-sibling::dd[1]/span[1]/text()") \
-            .get()
+        return response.xpath("//dt[contains(.,'Building type')]/following-sibling::dd[1]/span[1]/text()").get()
 
     @staticmethod
     def extract_living_area(response):
+        # TODO: Sometimes it's called 'Area'. When 'Living area' cannot be found, check for 'Area'.
         return response.xpath("//dt[contains(.,'Living area')]/following-sibling::dd[1]/span[1]/text()") \
             .get().split(' ')[0]
 
     @staticmethod
     def extract_year_of_construction(response):
-        return response.xpath("//dt[contains(.,'Year of construction')]/following-sibling::dd[1]/span[1]/text()") \
-            .get()
+        return response.xpath("//dt[contains(.,'Year of construction')]/following-sibling::dd[1]/span[1]/text()").get()

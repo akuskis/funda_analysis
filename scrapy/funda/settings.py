@@ -15,7 +15,7 @@ NEWSPIDER_MODULE = 'funda.spiders'
 LOG_LEVEL = 'ERROR'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'funda (+http://www.yourdomain.com)'
+USER_AGENT = "Mozilla/5.0 (X11; Gentoo; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True

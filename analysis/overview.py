@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -20,33 +21,47 @@ def load_data(filepath):
     return data_frame
 
 
-data_frame = load_data('../scrapy/x.json')
+def get_data_file_path():
+    if len(sys.argv) == 2:
+        return sys.argv[1]
+    return None
 
-# drop old buildings
-mask_year_of_construction = data_frame['year_of_construction'] > 1990
-data_frame = data_frame[mask_year_of_construction]
 
-# filter by living area
-mask_living_area = data_frame['living_area'].between(80, 100)
-data_frame = data_frame[mask_living_area]
+if __name__ == '__main__':
+    # get file path
+    filepath = get_data_file_path()
+    if filepath is None:
+        print('Please provide path to data dump')
+        exit()
 
-# filter 10% of cheapest and 10% of most expensive
-df = pd.DataFrame()
-for town in data_frame['town'].unique():
-    partial_mask = data_frame['town'] == town
-    min, max = data_frame[partial_mask]['price'].quantile([0.1, 0.9])
-    mask = (data_frame['town'] == town) & (data_frame['price'].between(min, max))
-    df = pd.concat([df, data_frame[mask]])
-data_frame = df
+    # process file
+    data_frame = load_data(filepath)
 
-# select some towns
-mask_by_towns = (data_frame['town'] == 'Amsterdam') | (data_frame['town'] == 'Rotterdam') | (
+    # drop old buildings
+    mask_year_of_construction = data_frame['year_of_construction'] > 1990
+    data_frame = data_frame[mask_year_of_construction]
+
+    # filter by living area
+    mask_living_area = data_frame['living_area'].between(80, 100)
+    data_frame = data_frame[mask_living_area]
+
+    # filter 10% of cheapest and 10% of most expensive
+    df = pd.DataFrame()
+    for town in data_frame['town'].unique():
+        partial_mask = data_frame['town'] == town
+        min, max = data_frame[partial_mask]['price'].quantile([0.1, 0.9])
+        mask = (data_frame['town'] == town) & (data_frame['price'].between(min, max))
+        df = pd.concat([df, data_frame[mask]])
+    data_frame = df
+
+    # select some towns
+    mask_by_towns = (data_frame['town'] == 'Amsterdam') | (data_frame['town'] == 'Rotterdam') | (
             data_frame['town'] == 'Haarlem') | (data_frame['town'] == 'Utrecht')
-data_frame = data_frame[mask_by_towns]
+    data_frame = data_frame[mask_by_towns]
 
-# draw plot
-sns.boxplot(x="price", y="town", data=data_frame, orient='h')
-plt.xlabel('Price in thousands of EUR')
-plt.ylabel('Town')
-plt.title('Distribution of Home Prices')
-plt.show()
+    # draw plot
+    sns.boxplot(x="price", y="town", data=data_frame, orient='h')
+    plt.xlabel('Price in thousands of EUR')
+    plt.ylabel('Town')
+    plt.title('Distribution of Home Prices')
+    plt.show()

@@ -29,4 +29,10 @@ Where `funda` is a name of the spider and `dump.json` is a place where to store 
 
 ## Analysis
 
-Amsterdam dependency: price / built date
+### Overview
+
+Show boxplot of price distribution:
+
+```shell
+./analysis/overview.py PATH_TO_DUMP_FILE
+```

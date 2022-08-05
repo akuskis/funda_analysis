@@ -1,8 +1,8 @@
 # Funda Analysis
 
-The goal of this project is to get data from funda.nl and do some analysis of it.
-
 ## Description
+
+Analysis of house pricing in the Netherlands by data received from [Funda](htts://funda.nl).
 
 ## Setup
 
@@ -28,6 +28,12 @@ Where `funda` is a name of the spider and `dump.json` is a place where to store 
 ## Historical data
 
 ## Analysis
+
+Run [JupyterLab](https://jupyter.org/) and navigate to the analysis folder (JupyterLab is installed as part of environment):
+
+```shell
+jupyter-lab
+```
 
 ### Overview
 

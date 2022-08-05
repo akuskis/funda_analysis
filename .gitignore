@@ -1,5 +1,6 @@
 # temporary files
 __pycache__
+.ipynb_checkpoints
 
 # IDE related files
 .idea

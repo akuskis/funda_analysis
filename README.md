@@ -35,10 +35,4 @@ Run [JupyterLab](https://jupyter.org/) and navigate to the analysis folder (Jupy
 jupyter-lab
 ```
 
-### Overview
-
-Show boxplot of price distribution:
-
-```shell
-./analysis/overview.py PATH_TO_DUMP_FILE
-```
+Notebooks are located in the **analysis** folder.

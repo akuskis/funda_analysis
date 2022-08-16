@@ -36,3 +36,13 @@ jupyter-lab
 ```
 
 Notebooks are located in the **analysis** folder.
+
+## Examples
+
+### Source price types
+
+![Price](docs/prices.png)
+
+### General distribution of the Living Area
+
+![Living area](docs/living_area.png)

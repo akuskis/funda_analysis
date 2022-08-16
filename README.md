@@ -46,3 +46,11 @@ Notebooks are located in the **analysis** folder.
 ### General distribution of the Living Area
 
 ![Living area](docs/living_area.png)
+
+### Search price distribution
+
+Filter data by buildings after 1990, 80-100 (m2) and not less than 20 properties per town.
+
+![By Filter](docs/prices_by_filter.png)
+
+Areas are not taken into account (as there are a lot of bad neighborhood in every city), but top 25% should give us approximate price of the property. Anyway it's a sandbox just to get starting bids, because real price is different.
